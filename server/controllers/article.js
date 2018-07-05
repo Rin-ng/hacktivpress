@@ -6,6 +6,8 @@ exports.getAll = function(req,res){
     let {title, content, category} = req.body;
 
     Article.find({})
+    .populate("author", "name")
+    .exec()
     .then(function(articles){
         res.status(200)
         .json({
@@ -31,7 +33,7 @@ exports.findByAuthor = function(req,res){
     .then(function(articles){
         res.status(200)
         .json({
-            message: "Article has been successfully created",
+            message: "These are the articles created by " + articles[0].author.name,
             articles
         })
     })
@@ -43,18 +45,19 @@ exports.findByAuthor = function(req,res){
     })
 }
 
-exports.findByAuthor = function(req,res){
-    let {category} = req.params;
+exports.findByCategory = function(req,res){
+    
+    let {category} = req.query;
 
     Article.find({
-        author : author
+        category : category
     })
     .populate("author", "name")
     .exec()
     .then(function(articles){
         res.status(200)
         .json({
-            message: "Article has been successfully created",
+            message: "These are the articles with the category " + articles[0].category,
             articles
         })
     })
@@ -111,7 +114,7 @@ exports.update = function(req,res){
     }
 
     Article.findById({
-        id
+        _id: id
     })
     .populate("author", "name")
     .exec()
@@ -123,11 +126,11 @@ exports.update = function(req,res){
         article.save()
         .then(function(){
             Article.find({})
-            .then(function(newTask){
+            .then(function(updated){
                 res.status(200)
                 .json({
                     message: "Article has been successfully updated",
-                    articles
+                    updated
                 })
             })
             .catch(function(err){
@@ -159,11 +162,11 @@ exports.dalete = function(req,res){
     .then(function(article){
 
         Article.find({})
-        .then(function(newTask){
+        .then(function(updated){
             res.status(200)
             .json({
-                message: "Article has been successfully updated",
-                articles
+                message: "Article has been successfully deleted",
+                updated
             })
         })
         .catch(function(err){

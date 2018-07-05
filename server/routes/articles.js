@@ -6,6 +6,8 @@ const articleController = require("../controllers/article")
 /* GET home page. */
 router
   .get("/", articleController.getAll)
+  .get("/find/:id", articleController.findByAuthor)
+  .get("/find", articleController.findByCategory)
   .post("/addNew", checkStatus.auth,articleController.createNew)
   .put("/:id/edit", checkStatus.auth, articleController.update)
   .delete("/:id/delete", checkStatus.auth, articleController.dalete)
