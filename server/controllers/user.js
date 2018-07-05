@@ -15,14 +15,14 @@ exports.signUp = function(req,res){
     })
     .catch(function(err){
         res.status(409)
-        .json("Failed to sign up");
+        .json(err.message);
     })
 }
 
 exports.signIn = function(req,res){
     let {username, password} = req.body;
 
-    User.find({
+    User.findOne({
         username: username
     })
     .then(function(user){

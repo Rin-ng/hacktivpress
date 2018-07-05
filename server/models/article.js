@@ -16,7 +16,7 @@ const articleSchema = new Schema({
     },
     author:{
         type: Schema.Types.ObjectId,
-        ref:"User"
+        ref:"Users"
     }
 },{timestamps: true})
 

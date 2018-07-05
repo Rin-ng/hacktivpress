@@ -12,7 +12,6 @@ exports.auth = function(req, res, next){
             .json({
                 message: "Access is forbidden"
             })
-
         }
     });
 }
