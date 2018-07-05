@@ -3,7 +3,7 @@ HacktivPress is a site where you can read blogs posted by users. You can sort th
 However, to add or edit a blog post, you would need to create an account.
 
 # How to access 
-You just have to access your localhost [like such](http://localhost:8080/), to read all blog posts created by our users. 
+You just have to access your localhost [like such](http://localhost:8080/), to read all blog posts created by our users (Please activate the server first). 
 To edit or add a blog, you would have to sign in first. 
 Don't have an account? Don't worry, you can sign up for free!
 
