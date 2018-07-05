@@ -3,8 +3,7 @@ const User = require("../models/user")
 const jwt = require("jsonwebtoken")
 
 exports.getAll = function(req,res){
-    let {title, content, category} = req.body;
-
+    console.log("sini?")
     Article.find({})
     .populate("author", "name")
     .exec()
